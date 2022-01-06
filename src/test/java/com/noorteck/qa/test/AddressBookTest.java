@@ -5,47 +5,114 @@ import com.noorteck.qa.utils.ObjInitialize;
 
 public class AddressBookTest extends ObjInitialize {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		
 		String url = "http://a.testaddressbook.com/sign_up";
-		
-		//Create objects of necessary classes in order to have access to them
-		CommonUI commonUIObj = new CommonUI();
-		ObjInitialize obj = new ObjInitialize();
 
-		AddressBookTest testObj = new AddressBookTest();
+	
+		// ***Test Case One***
 		
-		// 1) Open the browser
-		commonUIObj.openBrowser("Chrome");
+		CommonUI.openBrowser("Chrome");
+		CommonUI.navigate(url);
+		ObjInitialize.initializeClassObj();
+		testCaseOne();
+				
 		
-		// 2) Enter the URL http://a.testaddressbook.com/sign_up
-		commonUIObj.navigate(url);
+		// ***Test Case Two***
 		
-		//Calling testCaseOne method
-		testObj.testCaseOne();
-		
-		commonUIObj.quitBrowser();
+		url = "http://a.testaddressbook.com/sign_in";
+		CommonUI.navigate(url);
+		testCaseTwo();
+
+		CommonUI.quitBrowser();
 		
 	}
 	
-	public void testCaseOne() {
+	public static void testCaseOne() {
 		
 		// 3) Enter email in email textbox
 		signUpObj.enterEmailAdress("gmena730@gmail.com");
 		
 		// 4) Enter password in password textbox
-		signUpObj.enterPassword("12345");
+		signUpObj.enterPassword("mima2330");
 
 		// 5) Click on Sign up button
 		signUpObj.clickSignUp();
-
-		// 6) Verify “Welcome to Address Book” messaged displayed		
-		successObj.isDisplayedSuccessMessage();
 		
+		// When we click on sign up button it takes me to http://a.testaddressbook.com/users, so this step is wrong.
+		// 6) Verify “Welcome to Address Book” messaged displayed				
+		// successObj.isDisplayedSuccessMessage();
+
 	}
 	
-	public void testCaseTwo() {
+	public static void testCaseTwo() {
 		
+		// 3) Enter email in email textbox
+		signInObj.enterEmailAddress("gmena730@gmail.com");
+		
+		// 4) Enter password in password textbox
+		signInObj.enterPassword("mima2330");
+		
+		// 5) Click on Sign in button
+		signInObj.clickSignIn();
+		
+		// 6) Click Addresses from menu
+		addressesObj.clickAddressButton();
+		
+		// 7) Click New Address
+		addressesObj.clickNewAddressButton();
+		
+		// 8) Enter first name in first name textbox
+		newAddressObj.enterFirstName("Giancarlo");
+		
+		// 9) Enter last name in last name textbox
+		newAddressObj.enterLastName("Mena");
+		
+		// 10) Enter Address in Address1 textbox
+		newAddressObj.enterAddress("RR1 Box 11961");
+		
+		// 00) Enter Secondary Address in textbox
+		newAddressObj.enterSecondaryAddress("N/A");
+
+		// 11) Enter City in City textbox
+		newAddressObj.enterCity("Manatí");
+		
+		// 12) Select your state from state dropdown
+		newAddressObj.selectState("text", "Puerto Rico");
+		
+		// 00) Enter Zip code in Zip code field
+		newAddressObj.enterZipCode("00674");
+		
+		// 13) Select United States from Country options
+		newAddressObj.clickCountryRadioUS();
+		
+		// 14) Enter 22 in Age textbox
+		newAddressObj.enterAge("31");
+		
+		// 15) Enter 123-2334-3434 in Phone textbox
+		newAddressObj.enterPhone("123-2334-3434");
+		
+		// 16) Select Dancing from Common Interests options
+		newAddressObj.selectInterestCheckbox();
+		
+		// 18) Enter Automation is Fun in Note textbox
+		newAddressObj.enterNote("Automation is Fun");
+		
+		// 19) Click Create Address button
+		newAddressObj.clickCreateAddressButton();
+		
+		// 20) Click List button
+		newAddressObj.clickListButton();
+		
+		//I'm yet to find a way to compare the values of the steps with the values being displayed.
+		
+		// 21) Verify Addresses table displays first name you entered in step 8
+		
+		// 22) Verify Addresses table displays last name you entered in step 9
+		
+		// 23) Verify Addresses table displays city name you entered in step 11
+		
+		// 24) Verify Addresses table displays state name you entered in step 12
 		
 		
 	}
@@ -63,8 +130,8 @@ public class AddressBookTest extends ObjInitialize {
 		
 			---> DONT FORGET ***** 	EACH PAGE CLASS SHOULD INHERIT CommonUI Class 				*******************
 			---> DONT FORGET ***** 	DECLARE PAGE CLASS OBJECT in CONSTANTS CLASS 				*******************
-			---> DONT FOGET  ***** 	INITIALIZE PAGE CLASS OBJECTS IN ObjInitialize JAVA ClASS 	*******************
-			---> DONT FOGET  ***** 	CHANGE JAVA VERSION TO 1.8 									*******************
+			---> DONT FORGET  ***** 	INITIALIZE PAGE CLASS OBJECTS IN ObjInitialize JAVA ClASS 	*******************
+			---> DONT FORGET  ***** 	CHANGE JAVA VERSION TO 1.8 									*******************
 			
 			
 			

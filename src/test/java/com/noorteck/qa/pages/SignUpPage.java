@@ -14,7 +14,7 @@ public class SignUpPage extends CommonUI {
 	@FindBy(id = "user_password")
 	WebElement passwordField;
 	
-	@FindBy(css = "input[class = 'btn btn-primary']")
+	@FindBy(css = "input[value='Sign up']")
 	WebElement signUpButton;
 	
 	
@@ -22,7 +22,6 @@ public class SignUpPage extends CommonUI {
 	public SignUpPage() {
 		PageFactory.initElements(driver, this);
 	}
-	
 	
 	public void enterEmailAdress(String emailAddress) {
 		enter(emailField, emailAddress);

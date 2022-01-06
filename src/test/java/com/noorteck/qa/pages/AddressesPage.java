@@ -8,16 +8,23 @@ import com.noorteck.qa.utils.CommonUI;
 
 public class AddressesPage extends CommonUI {
 	
-	@FindBy (linkText = "New Address")
-	WebElement newAddressButton;
+	@FindBy (css = ".nav-item.nav-link[data-test='addresses']")
+	WebElement addressButton;
+	
+	@FindBy (css = ".row.justify-content-center")
+	WebElement clickNewAddressButton;
 	
 	//Initialize WebElement
 	public AddressesPage() {
 		PageFactory.initElements(driver, this);
 	}
 	
-	public void clickNewAdressButton() {
-		click(newAddressButton);
+	public void clickAddressButton() {
+		click(addressButton);
+	}
+	
+	public void clickNewAddressButton() {
+		click(clickNewAddressButton);
 	}
 
 }
